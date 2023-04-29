@@ -1,0 +1,21 @@
+service: http-jwt-auth
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-1
+
+functions:
+  getHandler:
+    handler: index.getHandler
+    events:
+      - httpApi:
+          method: GET
+          path: /auth0/get
+  postHandler:
+    handler: index.postHandler
+    events:
+      - httpApi:
+          method: POST
+          path: /auth0/post
